@@ -15,7 +15,7 @@ var jshtml = {
         
         for(var jshtml__i = 0, jshtml__len = jshtml__source.length; jshtml__i < jshtml__len; jshtml__i++)
         {
-	    var jshtml__tryCacheAddition = false;
+            var jshtml__tryCacheAddition = false;
 			
             if(jshtml__source[jshtml__i] === '#')
             {
@@ -38,32 +38,32 @@ var jshtml = {
                     
                     jshtml__cache = '';
                 }
-		else
-		{
-		    jshtml__tryCacheAddition = true;
-		}
+                else
+                {
+                    jshtml__tryCacheAddition = true;
+                }
             }
             else
             {
-		jshtml__tryCacheAddition = true;
+                jshtml__tryCacheAddition = true;
             }
 			
-	    if(!/[\n\r]/.test(jshtml__source[jshtml__i]) && jshtml__tryCacheAddition)
-	    {
-	        jshtml__cache += jshtml__source[jshtml__i];   
-	    }
+            if(!/[\n\r]/.test(jshtml__source[jshtml__i]) && jshtml__tryCacheAddition)
+            {
+                jshtml__cache += jshtml__source[jshtml__i];   
+            }
         }
         
         jshtml__js += (jshtml__cache.trim().length > 0? 'jshtml__HTML += \'' + jshtml__cache.replace(/\'/g, '\\\'') + '\';' : '');
         
-	try
-	{
-	    eval(jshtml__js);
-	}
-	catch(jshtml__exception)
-	{
-	    throw jshtml__exception;
-	}
+        try
+        {
+            eval(jshtml__js);
+        }
+        catch(jshtml__exception)
+        {
+            throw jshtml__exception;
+        }
         
         return jshtml__HTML.length > 0? jshtml__HTML : null;
     },
