@@ -1,3 +1,5 @@
+//Created by Davi de Sousa Arimateia, daviarimateia93@gmail.com
+
 var jshtml = {
 
     data: 'data',
@@ -62,13 +64,14 @@ var jshtml = {
         }
         catch(jshtml__exception)
         {
+            console.log(jshtml__js);
             throw jshtml__exception;
         }
         
         return jshtml__HTML.length > 0? jshtml__HTML : null;
     },
     
-    remoteRender: function(jshtml__url)
+    remoteRender: function(jshtml__url, jshtml__data)
     {
         var jshtml__source = null;
         
@@ -76,12 +79,12 @@ var jshtml = {
         {
             url: jshtml__url,
             async: false,
-            success: function(jshtml__data)
+            success: function(jshtml__ajaxData)
             {
-                jshtml__source = jshtml__data;
+                jshtml__source = jshtml__ajaxData;
             }
         });
         
-        return this.render(jshtml__source);
+        return this.render(jshtml__source, jshtml__data);
     }
 };
